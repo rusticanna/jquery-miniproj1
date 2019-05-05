@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Validation</title>
+    <script src="jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            // hide error messages
+            $('.error-message').hide();
+            /* check valid username */
+            $('#username').focusout(function(){
+                var username = $(this).val();
+                var node = $(this).parent().find('.error-message');
+                if (username.length < 6) {
+                    node.show();
+                } else {
+                    node.hide();
+                }
+            });
+            /* check valid passwords */
+            $('#confirm-password').focusout(function(){
+                var password = $('#password').val();
+                var confirmPassword = $(this).val();
+                var node = $(this).parent().find('.error-message');
+                if (password !== confirmPassword) {
+                    node.show();
+                } else {
+                    node.hide();
+                }
+            });
+        });
+    </script>
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <p>
+            <label>Username</label>
+            <input type="text" id="username">
+            <br />
+            <span class="error-message">Username should be more than 6 characters.</span>
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" id="password">
+        </p>
+        <p>
+            <label>Confirm Password</label>
+            <input type="password" id="confirm-password">
+            <br />
+            <span class="error-message">Your passwords do not match.</span>
+        </p>
+            <button type="button">Submit</button>
+    </form>
+</body>
+</html>
