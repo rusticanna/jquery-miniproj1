@@ -31,6 +31,13 @@
                     node.hide();
                 }
             });
+            $('button').click(function(e) {
+                e.preventDefault();
+                // validation checks to decide whether or not the form should be submitted
+                if (0 === 1) {
+                    $('form').submit();
+                }
+            });
         });
     </script>
     <style>
@@ -42,22 +49,26 @@
 <body>
     <form>
         <p>
-            <label>Username</label>
+            <label>Username: </label>
             <input type="text" id="username">
             <br />
             <span class="error-message">Username should be more than 6 characters.</span>
         </p>
         <p>
-            <label>Password</label>
+            <label>Password: </label>
             <input type="password" id="password">
         </p>
         <p>
-            <label>Confirm Password</label>
+            <label>Confirm Password: </label>
             <input type="password" id="confirm-password">
             <br />
             <span class="error-message">Your passwords do not match.</span>
         </p>
-            <button type="button">Submit</button>
+        <p>
+            <label for="message" style="float:left; margin-right: 10px;">Message: </label>
+            <textarea name="message" rows="3" style="width: 200px"></textarea>
+        </p>
+        <button type="submit">Submit</button> <!-- changed from Button to Submit-->
     </form>
 </body>
 </html>
